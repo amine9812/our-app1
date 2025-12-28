@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Art Maker | Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/editor.css">
+  <link rel="stylesheet" href="assets/css/themes.css">
+</head>
+<body data-page="editor">
+  <!-- Shared header with brand, navigation, and theme toggle -->
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark">PX</span>
+        <span class="brand-name">Pixel Art Maker</span>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a class="pill" href="#editor">Editor</a>
+      </nav>
+      <div class="header-actions">
+        <button class="ghost icon-btn" id="theme-toggle" aria-label="Toggle theme">
+          <span aria-hidden="true">🌗</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="editor" class="editor-layout">
+    <!-- Left control panel: tools, colors, and shortcuts -->
+    <section class="panel left">
+      <div class="panel-section">
+        <header>
+          <p class="eyebrow">Tools</p>
+          <span id="current-tool-label" class="tag">Pencil</span>
+        </header>
+        <div class="tool-grid" id="tool-buttons" role="toolbar" aria-label="Drawing tools">
+          <button data-tool="pencil" class="btn small primary">Pencil (P)</button>
+          <button data-tool="eraser" class="btn small ghost">Eraser (E)</button>
+          <button data-tool="bucket" class="btn small ghost">Bucket (B)</button>
+          <button data-tool="eyedropper" class="btn small ghost">Eyedropper (I)</button>
+          <button data-tool="line" class="btn small ghost">Line (L)</button>
+          <button data-tool="rectangle" class="btn small ghost">Rectangle (R)</button>
+        </div>
+        <div class="toggle-row">
+          <label class="switch">
+            <input type="checkbox" id="mirror-toggle">
+            <span class="slider"></span>
+          </label>
+          <span>Mirror drawing</span>
+        </div>
+        <div class="toggle-row">
+          <label class="switch">
+            <input type="checkbox" id="rectangle-fill-toggle" checked>
+            <span class="slider"></span>
+          </label>
+          <span>Filled rectangle</span>
+        </div>
+      </div>
+
+      <div class="panel-section colors">
+        <header>
+          <p class="eyebrow">Colors</p>
+          <span class="tag">Right-click = Secondary</span>
+        </header>
+        <div class="swatches">
+          <div class="swatch">
+            <label for="primary-color">Primary</label>
+            <input type="color" id="primary-color" value="#0ea5e9">
+            <input type="text" id="primary-hex" maxlength="7" value="#0ea5e9" aria-label="Primary color hex">
+          </div>
+          <div class="swatch">
+            <label for="secondary-color">Secondary</label>
+            <input type="color" id="secondary-color" value="#f97316">
+            <input type="text" id="secondary-hex" maxlength="7" value="#f97316" aria-label="Secondary color hex">
+          </div>
+        </div>
+        <div class="palette" id="preset-palette" aria-label="Preset colors"></div>
+        <div class="recent">
+          <p class="muted">Recent colors</p>
+          <div id="recent-colors" class="recent-colors"></div>
+        </div>
+      </div>
+
+      <div class="panel-section shortcuts">
+        <header>
+          <p class="eyebrow">Shortcuts</p>
+        </header>
+        <ul>
+          <li>P Pencil | E Eraser | B Bucket | I Eyedropper</li>
+          <li>L Line | R Rectangle | G Gridlines</li>
+          <li>Ctrl/Cmd+Z Undo | Ctrl/Cmd+Shift+Z Redo</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Central canvas workspace and toolbar -->
+    <section class="canvas-area">
+      <div class="toolbar">
+        <div class="control">
+          <label for="grid-size">Grid size</label>
+          <select id="grid-size">
+            <option value="8">8</option>
+            <option value="16" selected>16</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+            <option value="48">48</option>
+            <option value="64">64</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="zoom">Zoom</label>
+          <input id="zoom" type="range" min="0.5" max="4" step="0.1" value="1">
+        </div>
+        <div class="control checkbox">
+          <label class="switch">
+            <input type="checkbox" id="gridlines-toggle" checked>
+            <span class="slider"></span>
+          </label>
+          <span>Gridlines</span>
+        </div>
+        <div class="control actions">
+          <button id="new-canvas" class="btn ghost">New</button>
+          <button id="clear-canvas" class="btn ghost">Clear</button>
+          <button id="undo" class="btn ghost">Undo</button>
+          <button id="redo" class="btn ghost">Redo</button>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper" id="canvas-wrapper">
+        <div id="grid" class="grid" aria-label="Pixel canvas"></div>
+      </div>
+
+      <div class="status-bar" id="status-bar">
+        <span id="status-size">16 x 16</span>
+        <span id="status-coord">Hover a pixel</span>
+        <span id="status-color">Color: #0ea5e9</span>
+      </div>
+    </section>
+
+    <!-- Right control panel: save/export/import helpers -->
+    <section class="panel right">
+      <div class="panel-section">
+        <header>
+          <p class="eyebrow">Project</p>
+        </header>
+        <div class="stacked">
+          <button id="save-local" class="btn primary">Save to browser</button>
+          <button id="load-local" class="btn ghost">Load last save</button>
+          <div id="save-list" class="save-list"></div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <header>
+          <p class="eyebrow">Export / Import</p>
+        </header>
+        <div class="stacked">
+          <button id="export-png" class="btn ghost">Export PNG</button>
+          <button id="export-json" class="btn ghost">Export JSON</button>
+          <label class="file-upload">
+            <span>Import JSON</span>
+            <input type="file" id="import-json" accept="application/json">
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-section help">
+        <header>
+          <p class="eyebrow">Tips</p>
+        </header>
+        <ul>
+          <li>Right-click draws with the secondary color.</li>
+          <li>Mirror drawing paints symmetrically.</li>
+          <li>Zoom to inspect details, then export at full resolution.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/* Light mode overrides */
+body[data-theme="light"] {
+  --bg: #f6f8fb;
+  --bg-surface: #ffffff;
+  --bg-panel: #f1f5f9;
+  --text: #0f172a;
+  --muted: #475569;
+  --primary: #0ea5e9;
+  --primary-strong: #0284c7;
+  --accent: #22c55e;
+  --accent-2: #f97316;
+  --border: #e2e8f0;
+  --shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  color-scheme: light;
+}
+
+body[data-theme="light"] .glass,
+body[data-theme="light"] .card,
+body[data-theme="light"] .canvas-area,
+body[data-theme="light"] .panel {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+/* Light mode gridline contrast */
+body[data-theme="light"] .grid.gridlines .cell {
+  border-color: rgba(15, 23, 42, 0.08);
+}

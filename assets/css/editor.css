@@ -1,0 +1,199 @@
+/* Three-column editor shell */
+.editor-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 16px;
+  width: min(1400px, 96%);
+  margin: 18px auto var(--space-xl);
+}
+
+/* Side panels */
+.panel {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  position: sticky;
+  top: 84px;
+}
+
+/* Panel sections and headings */
+.panel-section {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.panel-section:last-child {
+  border-bottom: none;
+}
+
+.panel-section header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* Color pickers and swatches */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+}
+
+.swatch {
+  display: grid;
+  gap: 6px;
+}
+
+.swatch input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+}
+
+/* Preset palette and recents grids */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.palette button,
+.recent-colors button {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 0;
+}
+
+.recent {
+  margin-top: 14px;
+}
+
+.recent-colors {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+
+/* Text lists inside helper boxes */
+.shortcuts ul,
+.help ul {
+  padding-left: 18px;
+  margin: 6px 0;
+  color: var(--muted);
+}
+
+/* Canvas wrapper and toolbar */
+.canvas-area {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control select,
+.control input[type="range"] {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.3);
+  color: var(--text);
+  padding: 8px 10px;
+}
+
+.control.actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+/* Canvas container with backdrop */
+.canvas-wrapper {
+  background: radial-gradient(circle at 10% 10%, rgba(14,165,233,0.15), transparent 30%), radial-gradient(circle at 90% 0%, rgba(34,197,94,0.12), transparent 25%), rgba(0,0,0,0.35);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 520px;
+  overflow: auto;
+}
+
+/* Pixel grid */
+.grid {
+  display: grid;
+  user-select: none;
+  touch-action: none;
+  image-rendering: pixelated;
+  background: #0b1224;
+}
+
+.grid.gridlines .cell {
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+}
+
+/* Status bar beneath canvas */
+.status-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+/* Breakpoints */
+@media (max-width: 1180px) {
+  .editor-layout {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .control.actions {
+    margin-left: 0;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}

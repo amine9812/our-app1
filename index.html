@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Art Maker | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/themes.css">
+</head>
+<body data-page="home">
+  <!-- Global header with brand, primary navigation, and theme toggle -->
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark">PX</span>
+        <span class="brand-name">Pixel Art Maker</span>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#about">Developers</a>
+        <a class="pill" href="editor.html">Launch Editor</a>
+      </nav>
+      <div class="header-actions">
+        <button class="ghost icon-btn" id="theme-toggle" aria-label="Toggle theme">
+          <span aria-hidden="true">🌗</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section introducing the product and primary calls-to-action -->
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="eyebrow">Create pixel-perfect art</p>
+        <h1>Design bold, crisp pixel art right in your browser.</h1>
+        <p class="lede">Two-color swatches, precision tools, and fast exports. No installs, no fuss—just open, draw, and share.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="editor.html">Open Pixel Editor</a>
+          <a class="btn ghost" href="#features">See features</a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <span class="kpi">64x64</span>
+            <p>Maximum canvas size</p>
+          </div>
+          <div>
+            <span class="kpi">Quick export</span>
+            <p>PNG & JSON in one click</p>
+          </div>
+          <div>
+            <span class="kpi">Keyboard-first</span>
+            <p>Tool shortcuts for speed</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual glass">
+        <div class="pixel-preview">
+          <!-- Static pixel sample to hint at the editor output -->
+          <div class="pixel-row">
+            <span class="pixel" style="--c:#f59e0b"></span>
+            <span class="pixel" style="--c:#f59e0b"></span>
+            <span class="pixel" style="--c:#0ea5e9"></span>
+            <span class="pixel" style="--c:#0ea5e9"></span>
+          </div>
+          <div class="pixel-row">
+            <span class="pixel" style="--c:#f59e0b"></span>
+            <span class="pixel" style="--c:#0ea5e9"></span>
+            <span class="pixel" style="--c:#6366f1"></span>
+            <span class="pixel" style="--c:#0ea5e9"></span>
+          </div>
+          <div class="pixel-row">
+            <span class="pixel" style="--c:#0ea5e9"></span>
+            <span class="pixel" style="--c:#6366f1"></span>
+            <span class="pixel" style="--c:#22c55e"></span>
+            <span class="pixel" style="--c:#6366f1"></span>
+          </div>
+          <div class="pixel-row">
+            <span class="pixel" style="--c:#0ea5e9"></span>
+            <span class="pixel" style="--c:#0ea5e9"></span>
+            <span class="pixel" style="--c:#6366f1"></span>
+            <span class="pixel" style="--c:#22c55e"></span>
+          </div>
+        </div>
+        <p class="caption">Preview your palette and symmetry with live gridlines.</p>
+      </div>
+    </section>
+
+    <!-- Feature cards describing editor capabilities -->
+    <section id="features" class="section container">
+      <div class="section-header">
+        <p class="eyebrow">Feature highlights</p>
+        <h2>Everything you need to paint, refine, and export pixels fast.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="card">
+          <div class="icon-circle">🎨</div>
+          <h3>Pro-grade tools</h3>
+          <p>Pencil, eraser, bucket, lines, rectangles, mirror drawing, and eyedropper—optimized for keyboard and mouse.</p>
+        </article>
+        <article class="card">
+          <div class="icon-circle">⚡</div>
+          <h3>Smart controls</h3>
+          <p>Undo/redo history, quick palettes, recent colors, zoom controls, and gridline toggles keep you in flow.</p>
+        </article>
+        <article class="card">
+          <div class="icon-circle">💾</div>
+          <h3>Save & export</h3>
+          <p>Local saves with timestamps, instant PNG/JSON export, and import to keep projects moving.</p>
+        </article>
+        <article class="card">
+          <div class="icon-circle">🌓</div>
+          <h3>Light & dark</h3>
+          <p>Theme toggle with thoughtful contrast and soft shadows for long sessions.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Team section listing the developers -->
+    <section id="about" class="section container about">
+      <div class="section-header">
+        <p class="eyebrow">About the developers</p>
+        <h2>Built by a small crew of frontend enthusiasts.</h2>
+      </div>
+      <div class="about-grid">
+        <article class="card person">
+          <h3>Dev 1: Zine Mohamed Amine</h3>
+          <p>Lead Engineer</p>
+          <p class="muted">zinemohamedamine61@gmail.com</p>
+        </article>
+        <article class="card person">
+          <h3>Dev 2: Ghaout Khalid</h3>
+          <p>Product Designer</p>
+          <p class="muted">Villtash21@gmail.com</p>
+        </article>
+        <article class="card person">
+          <h3>Dev 3: Moulay Aissa Abdelhamid</h3>
+          <p>QA & Tooling</p>
+          <p class="muted">mlyabdelhamid@gmail.com</p>
+        </article>
+        <article class="card person">
+          <h3>Dev 4: Jbilou Idriss</h3>
+          <p>Platform & Export Integrations</p>
+          <p class="muted">idrissfr14@gmail.com</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA encouraging users to open the editor -->
+    <section class="cta container glass">
+      <div>
+        <p class="eyebrow">Start creating</p>
+        <h2>Open the editor and sketch your first sprite in seconds.</h2>
+      </div>
+      <a class="btn primary" href="editor.html">Launch Pixel Editor</a>
+    </section>
+  </main>
+
+  <!-- Minimal footer with quick navigation back to the editor -->
+  <footer class="site-footer container">
+    <p>Made with care for pixel artists and hobbyists.</p>
+    <a href="editor.html">Go to editor</a>
+  </footer>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

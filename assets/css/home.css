@@ -1,0 +1,23 @@
+/* Team card typography */
+.about-grid .person h3 {
+  margin: 0 0 4px 0;
+}
+
+.about-grid .person p {
+  margin: 2px 0;
+}
+
+/* Hero visual wrapper */
+.hero-visual {
+  padding: 24px;
+  border-radius: var(--radius);
+}
+
+.hero-visual .caption {
+  margin-top: 14px;
+}
+
+/* Extra spacing for about section */
+.section.about {
+  margin-bottom: var(--space-lg);
+}
